@@ -24,7 +24,8 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;    
+    font-family: "Share", "å¾®è»Ÿæ­£é»‘é«”"!important;
 }
 ol, ul {
 	list-style: none;
@@ -49,15 +50,14 @@ a:link, a:visited{
     text-decoration:none;
 }
 a:hover, a:active {
-    color:#db3737;
+    /* color:#db3737; */
     text-decoration:none;
 }
 
-
 .wrap{
-    width:80%;
-    margin: 0 auto ;
-    font-family: 微軟正黑體;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .header{
@@ -89,7 +89,7 @@ a:hover, a:active {
     bottom:10px;
     right: 0;
     text-align: right;
-
+    transition: 0.5s;
     
 }
 
@@ -101,29 +101,33 @@ a:hover, a:active {
 }
 
 .login{
-    width: 20%;
-    height: 400px;
+    margin: auto;
     border: 1px solid #000;
     position: absolute;
-    right: 10%;
-    background-color:#243447;
+    right: 0;
+    background-color: #243447;
     color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .login input{
-    width: 300px;
+    width: 76%;
     height: 24px;
     margin-bottom: 20px;
     margin-left: 5px;
 }
 
-.login a{
+.forget{
     font-size: 16px;
     color:wheat;
+    display: block;
+}
+
+.login a{
+    color: white;
 }
 
 .login h4{
@@ -135,7 +139,7 @@ a:hover, a:active {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
-    border: 1px solid #000;
+    border: 1px solid #FFFFFF;
     float: left;
 }
 
@@ -186,7 +190,7 @@ a:hover, a:active {
     width: 100%;
     height: 36px;
     margin-bottom: 20px;
-    background-color:#FFFFBB;
+    background-color:#FFFFFF;
 }
 
 .signup h2{
@@ -213,7 +217,7 @@ a:hover, a:active {
     right: 10%;
     background-color:#243447;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 39px;
     padding-left: 30px;
     padding-right: 30px;
     margin: 40px auto 0px auto;
@@ -224,16 +228,18 @@ a:hover, a:active {
     width: 100%;
     height: 36px;
     margin-bottom: 20px;
-    background-color:#FFFFBB;
+    background-color:#FFFFFF;
 }
 
-.profile h2{
+.profile h2 {
     font-size: 24px;
+    line-height: 1.5;
 }
 
 .profile h4{
     font-size: 16px;
     float: left;
+    line-height: 2;
 }
 
 .list {
@@ -277,10 +283,13 @@ a:hover, a:active {
 
 .allvote{
     border: 1px solid white;
-    float: left;
-    width: 80%;
     padding: 10px 10px 10px 10px;
     margin-bottom: 55px;
+    text-align: center;
+}
+
+.candidate-list{
+    min-height: 500px;
 }
 
 .nowvoting{
@@ -296,26 +305,40 @@ a:hover, a:active {
 
 .candidate{
     text-align: center;
-    float: left;
-    width: 100%;
    
 }
 
 .candidate ul{
     text-align: center;
-    float: left;
-    padding-left: 20% ;
-   
+    display: block;
 }
 
 .candidate li{
-    float: left;
-    margin-right: 10px;
-
+    display: inline-block;
 }
 
 .acandidate{
     margin-bottom:  20px;
+}
+
+.acandidate .candidate-name{
+    float: left;
+    font-size: 25px;
+    line-height: 100px;
+    margin-left: 15px;
+}
+
+.acandidate .candidate-image{
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+
+.acandidate .info{
+    float: right;
+    width: 60%;
+    margin-top: 40px;
+    margin-right: 20px;
 }
 
 .button{
@@ -331,7 +354,29 @@ a:hover, a:active {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 50%;
+    font-family: "Share", "å¾®è»Ÿæ­£é»‘é«”";    
 }
+
+.fullscreen{
+    position:fixed;
+    background:#4c4c4c9e;
+    display:none;
+    width:100vw;
+    height:100vh;
+    z-index: 1;
+    text-align:center;
+}
+
+#popup-txt{
+    line-height: 168px;
+    font-size: 64px;
+    color: white;
+}
+
+.vote-button{
+    transition: 0.5s;
+}
+
 .joinvote{
     margin-bottom: 20px;
     background-color:#888888; 
@@ -348,11 +393,12 @@ a:hover, a:active {
 }
 
 .footer{
-    height: 100px;
-    background: pink;
-    color: #000;
+    background: #8f8f8f;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 50px;
+    padding: 20px;
+    color: white;
+    line-height: 1.2;
 }
 
 .footer h4{
@@ -363,33 +409,185 @@ a:hover, a:active {
     display: none;
   }
   label {
-    display: inline-block;
-    position: relative;
-    padding-left: 30px;
-    padding-bottom: 10px;
+    cursor: pointer;
     font-size: 16px;
-    line-height: 20px;
     margin: 10px;
+    float: right;
+    transition: 0.5s;
   }
   label:before {
     line-height: 20px;
     content: "";
-    display: inline-block;
+    display: block;
+    margin-top: 28px;
     width: 20px;
     height: 20px;
-    position: absolute;
     left: 0;
     background-color: white;
     border: 3px solid grey;
   }
-  input[type=checkbox]:checked + label:before,
-  label:hover:before {
+  label:hover:before{
+    content: "\2713";
+    color: #B6B6B6;
+    text-align: center;
+    line-height: 20px;
+  }
+
+  input[type=radio]:checked + label:before{
     content: "\2713";
     color: black;
+    font-weight: bold;
     text-align: center;
     line-height: 16px;
   }
 
 .clear{
     clear:both;
+}
+
+.title{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.nowvoting h2{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+#login_button{
+    cursor: pointer;
+}
+
+.candidate_image{
+    width: 96%;
+    height: 96%;
+    margin: 2%;
+}
+
+.wrap{
+    position: relative;
+    max-width: 540px;
+}
+.candidate li{
+    width: 50%;
+}
+
+.login h2{
+    line-height: 1.5;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.login p{
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.progress-bar-bg{
+    display: inline-block;
+    width: 85%;
+    height: 20px;
+    background-color: #d2d2d2;
+    border-radius: 25px;
+}
+
+.progress-bar{
+    background-color: #FF8EA1;
+    width: 0%;
+    height: 20px;
+    border-radius: 25px;
+    transition: 0.65s;
+}
+
+.info .percentage{
+    display: inline-block;
+    line-height: 20px;
+    vertical-align: top;
+    width: 10%;
+    text-align: right;
+}
+
+.info .num{
+    line-height: 12px;
+    margin-top: 5px;
+    text-align: right;
+    color: gray;
+}
+
+.popup-box{
+    width: 450px;
+    height: 168px;
+    position: relative;
+    margin: auto;
+    top: 45%;
+    background: #333333;
+    border-radius: 25px;
+}
+
+.forget-panel{
+    width: 250px!important;
+    height: 350px;
+    border: 1px solid #000;
+    right: 10%;
+    background-color: #243447;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 100px auto 245px auto;
+    border-radius: 5px;
+}
+
+#vote_name{
+    font-size: 35px;
+    line-height: 1.5;
+}
+
+@media(min-width: 576px){
+    .wrap{
+        max-width: 540px;
+    }
+    .candidate li{
+        width: 95px;
+        height: 95px;
+    }
+}
+
+@media(min-width: 768px){
+    .wrap{
+        max-width: 720px;
+    }
+    .candidate li{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media(min-width: 992px){
+    .wrap{
+        max-width: 960px;
+    }
+    .candidate li{
+        width: 120px;
+        height: 120px;
+    }
+    .forget{
+        display: inline-block;
+    }
+}
+
+@media(min-width: 1200px){
+    .wrap{
+        max-width: 1140px;
+    }
+    .candidate li{
+        width: 135px;
+        height: 135px;
+    }
+    .login{
+        width: 34%;
+    }
 }

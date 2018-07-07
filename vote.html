@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,78 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Share" rel="stylesheet">
+    <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/78B3876E-72E6-854C-8B97-A8D921F78BE0/main.js" charset="UTF-8"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
     <script src="js/all.js"></script>
     <script src="js/database.js"></script>
+    <script src="js/swipe.js"></script>
     <title>洧杰愛投票</title>
 </head>
 <body>
+    <div class="loading" id="loadingpanel" style=" position: fixed; width: 100vw; height: 100vh; text-align: center; z-index: 100; display:none;background:#00000082;">
+        <img src="images/uploading.gif" alt="" style="width: 150px;margin-top: 39vh;"><img>
+    </div>
+    <div class="fullscreen">
+        <div style=" width: 450px; height: 168px; position: relative; margin: auto; top: 45%; background: #333333; border-radius: 25px; ">
+            <p id="popup-txt">註冊中...</p>
+        </div>
+    </div>
     <div class="wrap">
         <div class="header">
-            <img src="images/logo1.png"  alt="">        
+            <img src="images/logo1.png" alt="">
             <div class="nav">
-                <a href="">洧杰愛投票</a>
-           </div>
+                <a href="index.html">洧杰愛投票</a>
+            </div>
             <div class="nav2">
+                <a id="login_button">註冊/登入</a>
+            </div>
+            <div class="nav2" id="user-button" style="display:none;">
                 <a href="user.html">個人資料</a>
+                <a href="javascript:LogOut()">登出</a>
             </div>
         </div>
         <div class="clear"></div>
+        <div class="login" style="display:none;">
+            <p>登入</p>
+            <input type="text" id="login_email" placeholder="電子郵件">
+            <input type="password" id="login_password" placeholder="密碼">
+            <a href="forget.html" class="forget">忘記密碼?</a>
+            </br>
+            <button class="buttonblue" onclick="OnLogInButtonClicked()">登入</button>
+            <div class="line"></div>
+            <p>還沒有帳號?</p>
+            <a href="signup.html"><button class="buttonpink">註冊</button></a>
+        </div>
+        <div class="clear"></div>
         <div class="main">
-            <div class="area">
-                <ul>
-                    <li><a href="">可參加的投票</a></li>
-                    <li><a href="">臺北市</a></li>
-                    <li><a href="">基隆市</a></li>
-                    <li><a href="">新北市</a></li>
-                    <li><a href="">桃園縣</a></li>
-                    <li><a href="">新竹縣</a></li>
-                    <li><a href="">新竹市</a></li>
-                    <li><a href="">苗栗縣</a></li>
-                    <li><a href="">宜蘭縣</a></li>
-                    <li><a href="">臺中市</a></li>
-                    <li><a href="">彰化縣</a></li>
-                    <li><a href="">雲林縣</a></li>
-                    <li><a href="">嘉義縣</a></li>
-                    <li><a href="">嘉義市</a></li>
-                    <li><a href="">南投縣</a></li>
-                    <li><a href="">臺南市</a></li>
-                    <li><a href="">高雄市</a></li>
-                    <li><a href="">屏東縣</a></li>
-                    <li><a href="">臺東縣</a></li>
-                    <li><a href="">花蓮縣</a></li>
-                    <li><a href="">離島</a></li>
-                </ul>
-            </div>
             <div class="allvote">
-
-                <div class="nowvoting">
-                    <h2>現在市長你選誰?</h2>
-                    <div class="acandidate"> 
-                        <h4><img src="images/logo1.png"  alt=""> 候選人姓名   進度條 50%<input type="checkbox" name="cadidate" value="good" class="cb" id="check1"><label for="check1"></label></h4>
-                    </div>
-                    <div class="acandidate"> 
-                        <h4><img src="images/logo1.png"  alt=""> 候選人姓名   進度條 50%<input type="checkbox" name="cadidate" value="good" class="cb" id="check2"><label for="check2"></label></h4>
-                    </div>
-                    <div class="acandidate"> 
-                        <h4><img src="images/logo1.png"  alt=""> 候選人姓名   進度條 50%<input type="checkbox" name="cadidate" value="good" class="cb" id="check3"><label for="check3"></label></h4>
-                    </div>
-                    <div class="acandidate"> 
-                        <h4><img src="images/logo1.png"  alt=""> 候選人姓名   進度條 50%<input type="checkbox" name="cadidate" value="good" class="cb" id="check4"><label for="check4"></label></h4>
-                    </div>
-                    <div class="acandidate"> 
-                        <h4><img src="images/logo1.png"  alt=""> 候選人姓名   進度條 50% <input type="checkbox" name="cadidate" value="good" class="cb" id="check5"><label for="check5"></label></h4>
-                    </div>
-                    </br>
-                    <button class="button">確認</button>
+                <div class="nowvoting candidate-list">
+                    <h2>載入選舉資料中...</h2>
+                    <img id="loading" src="images/uploading.gif" alt="" style="width:100px;margin-top:200px;"><img/>
                 </div>
             </div>
         </div>
         <div class="clear"></div>
         <div class="footer">
-            <h4>自己國家自己顧</h4>
+            <p>A1043335 陳冠維</p>
+            <p>A1043310 張宇寬</p>
+            <p>A1043321 李佳珈</p>
+            <p>A1043352 吳國揚</p>
         </div>
     </div>
+    <script>
+        ShowVotePage();
+    </script>
 </body>
 </html>
